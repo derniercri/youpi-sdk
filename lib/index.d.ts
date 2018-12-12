@@ -20,6 +20,7 @@ export default class Sdk {
         'Authorization': string;
         'Content-Type': string;
     };
+    createMode: () => "navigate" | "cors";
     createPreferences: (preferences: SensorPreferences) => Promise<Response>;
     updatePreSensorferences: (preferences: SensorPreferences) => Promise<Response>;
     groups: () => Promise<Group[]>;
