@@ -115,6 +115,11 @@ export default class Sdk {
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))
 
+    public endpointIssue = (endpointId: number): Promise<EndpointIssue> => fetch(`${this.url}/api/v1/endpointissues/${endpointId}`, {
+        headers: this.createHeaders(this.token),
+        mode: this.createMode(),
+    }).then((res) => this.resHandler(res))
+
     public sensorCheck = (id: number): Promise<StatusCheck> => fetch(`${this.url}/api/v1/sensors/${id}/check`, {
         headers: this.createHeaders(this.token),
         mode: this.createMode(),

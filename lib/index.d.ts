@@ -28,6 +28,7 @@ export default class Sdk {
     getUser: (userId: string) => Promise<User>;
     comments: (issueId: number) => Promise<Comment[]>;
     sensors: (groupId: number) => Promise<Sensor[]>;
+    endpointIssue: (endpointId: number) => Promise<EndpointIssue>;
     sensorCheck: (id: number) => Promise<StatusCheck>;
     issues: (groupId: number, stat: string) => Promise<Issue[]>;
     updateIssue: (issue: Issue) => Promise<Response>;
