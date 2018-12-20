@@ -10,6 +10,8 @@ export type Status = 'OK' | 'KO' | 'HANDLED'
 export type EndpointIssue = {
     id: number,
     sensorId: number,
+    body: string,
+    statusCode: number,
     responsibleId: number | null,
 }
 

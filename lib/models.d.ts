@@ -6,6 +6,8 @@ export declare type Status = 'OK' | 'KO' | 'HANDLED';
 export declare type EndpointIssue = {
     id: number;
     sensorId: number;
+    body: string;
+    statusCode: number;
     responsibleId: number | null;
 };
 export declare type Group = {
