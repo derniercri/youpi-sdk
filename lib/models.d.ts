@@ -4,11 +4,21 @@ export declare const APP = 1;
 export declare const SENSOR = 2;
 export declare type Status = 'OK' | 'KO' | 'HANDLED';
 export declare type EndpointIssue = {
+    createdAt: string;
+    endpointsInfo: EndpointInfo;
     id: number;
+    resolvedAt: string;
     sensorId: number;
+    status: string;
+};
+export declare type EndpointInfo = {
+    id: number;
     body: string;
-    statusCode: number;
+    createdAt: string;
     responsibleId: number | null;
+    sensorId: number;
+    statusCode: number;
+    updatedAt: string;
 };
 export declare type Group = {
     id: number;
