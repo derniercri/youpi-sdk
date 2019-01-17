@@ -7,16 +7,18 @@ export const SENSOR = 2
 
 export type Status = 'OK' | 'KO' | 'HANDLED'
 
-export type EndpointIssue = {
-    createdAt: string,
-    endpointsInfo: EndpointInfo,
+
+export type Issue = {
     id: number,
+    status: 'OPEN' | 'CLOSED',
+    createdAt: string,
     resolvedAt: string,
+    endpoints: number[],
     sensorId: number,
-    status: string
+    endpointsInfo: EndpointIssue[],
 }
 
-export type EndpointInfo = {
+export type EndpointIssue = {
     id: number,
     body: string,
     createdAt: string,
@@ -57,15 +59,6 @@ export type SeriePoint = {
     status: Status,
 }
 
-export type Issue = {
-    id: number,
-    status: 'OPEN' | 'CLOSED',
-    createdAt: string,
-    resolvedAt: string,
-    endpoints: number[],
-    sensorId: number,
-    endpointsInfo: EndpointIssue[],
-}
 
 export type StatusCheck = {
     statusCode: string,

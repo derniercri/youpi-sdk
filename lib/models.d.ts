@@ -3,15 +3,16 @@ export declare const DOMAIN = 0;
 export declare const APP = 1;
 export declare const SENSOR = 2;
 export declare type Status = 'OK' | 'KO' | 'HANDLED';
-export declare type EndpointIssue = {
-    createdAt: string;
-    endpointsInfo: EndpointInfo;
+export declare type Issue = {
     id: number;
+    status: 'OPEN' | 'CLOSED';
+    createdAt: string;
     resolvedAt: string;
+    endpoints: number[];
     sensorId: number;
-    status: string;
+    endpointsInfo: EndpointIssue[];
 };
-export declare type EndpointInfo = {
+export declare type EndpointIssue = {
     id: number;
     body: string;
     createdAt: string;
@@ -45,15 +46,6 @@ export declare type SeriePoint = {
     time: number;
     latency: number;
     status: Status;
-};
-export declare type Issue = {
-    id: number;
-    status: 'OPEN' | 'CLOSED';
-    createdAt: string;
-    resolvedAt: string;
-    endpoints: number[];
-    sensorId: number;
-    endpointsInfo: EndpointIssue[];
 };
 export declare type StatusCheck = {
     statusCode: string;
