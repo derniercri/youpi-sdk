@@ -71,6 +71,7 @@ export declare type SensorPreferences = {
 };
 export declare type User = {
     id: number;
+    ldap: number;
     lastName: string;
     firstName: string;
     email: string;
@@ -94,3 +95,29 @@ export declare type Comment = {
 export declare type MeteoSubType = 5 | 6 | 7;
 export declare type MeteoType = SensorType | MeteoSubType;
 export declare const dataTypeText: (t?: number | undefined) => "" | "domaine" | "application" | "sonde" | "accueil" | "listes" | "incidents";
+export declare type Service = {
+    id: number;
+    name: string;
+    environment: string;
+};
+export declare type Application = {
+    id: number;
+    name: string;
+    services: Service[];
+};
+export declare type Bloc = {
+    id: number;
+    title: string;
+    autoBlock: boolean;
+};
+export declare type View = {
+    id: number;
+    name: string;
+    teamId: number;
+    blocs: Bloc[];
+};
+export declare type Team = {
+    id: number;
+    approved: boolean;
+    name: string;
+};

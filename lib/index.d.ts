@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Sensor, SensorPreferences, User, Group, Issue, EndpointIssue, StatusCheck, CommentCategory, DeviceToken, SeriePoint, RegisterForm } from './models';
+import { Sensor, SensorPreferences, User, Group, Issue, EndpointIssue, StatusCheck, CommentCategory, DeviceToken, SeriePoint, RegisterForm, View, Team } from './models';
 export * from './models';
 export declare type TokenRes = {
     token?: string;
@@ -20,7 +20,7 @@ export default class Sdk {
         'Authorization': string;
         'Content-Type': string;
     };
-    createMode: () => "navigate" | "cors";
+    createMode: () => "cors" | "navigate";
     createPreferences: (preferences: SensorPreferences) => Promise<Response>;
     updatePreSensorferences: (preferences: SensorPreferences) => Promise<Response>;
     groups: () => Promise<Group[]>;
@@ -43,6 +43,10 @@ export default class Sdk {
     register: (userForm: RegisterForm) => Promise<User>;
     createOwner: (sensorId: number, userId: number) => Promise<User>;
     createComment: (issueId: number, categoryId: number, content: string) => Promise<any>;
+    views: () => Promise<View[]>;
+    view: (id: number) => Promise<View>;
+    viewsByTeam: (teamId: number) => Promise<Team[]>;
+    memberTeams: (member: number) => Promise<Team[]>;
 }
 export declare const initSdk: (url: string) => Sdk;
 export declare const getSdk: () => Sdk;
