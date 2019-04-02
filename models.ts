@@ -87,6 +87,7 @@ export type SensorPreferences = {
 
 export type User = {
     id: number,
+    ldap: number,
     lastName: string,
     firstName: string,
     email: string,
