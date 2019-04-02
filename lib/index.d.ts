@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Sensor, SensorPreferences, User, Group, Issue, EndpointIssue, StatusCheck, CommentCategory, DeviceToken, SeriePoint, RegisterForm, View, Team } from './models';
+import { Sensor, SensorPreferences, User, Issue, EndpointIssue, StatusCheck, CommentCategory, DeviceToken, SeriePoint, RegisterForm, View, Team } from './models';
 export * from './models';
 export declare type TokenRes = {
     token?: string;
@@ -23,14 +23,13 @@ export default class Sdk {
     createMode: () => "cors" | "navigate";
     createPreferences: (preferences: SensorPreferences) => Promise<Response>;
     updatePreSensorferences: (preferences: SensorPreferences) => Promise<Response>;
-    groups: () => Promise<Group[]>;
     updateUser: (user: User) => Promise<User>;
     getUser: (userId: string) => Promise<User>;
     comments: (issueId: number) => Promise<Comment[]>;
-    sensors: (groupId: number) => Promise<Sensor[]>;
+    sensors: (viewId: number) => Promise<Sensor[]>;
     endpointIssue: (endpointId: number) => Promise<EndpointIssue>;
     sensorCheck: (id: number) => Promise<StatusCheck>;
-    issues: (groupId: number, stat: string) => Promise<Issue[]>;
+    issues: (viewId: number, stat: string) => Promise<Issue[]>;
     updateIssue: (issue: Issue) => Promise<Response>;
     updateEndpointIssue: (endpointIssue: EndpointIssue) => Promise<Response>;
     sensorsPreferences: () => Promise<SensorPreferences[]>;

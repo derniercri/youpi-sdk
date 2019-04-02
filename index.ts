@@ -5,7 +5,6 @@ import {
     Token,
     SensorPreferences,
     User,
-    Group,
     Issue,
     EndpointIssue,
     StatusCheck,
@@ -86,12 +85,6 @@ export default class Sdk {
             mode: this.createMode(),
         })
 
-    public groups = (): Promise<Group[]> =>
-        fetch(`${this.url}/api/v1/groups`, {
-            headers: this.createHeaders(this.token),
-            mode: this.createMode(),
-        }).then((res) => this.resHandler(res))
-
     public updateUser = (user: User): Promise<User> => {
         const body = JSON.stringify(user)
         return fetch(`${this.url}/api/v1/users/${user.id}`, {
@@ -112,7 +105,7 @@ export default class Sdk {
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))
 
-    public sensors = (groupId: number): Promise<Sensor[]> => fetch(`${this.url}/api/v1/groups/${groupId}/sensors`, {
+    public sensors = (viewId: number): Promise<Sensor[]> => fetch(`${this.url}/api/v1/sensors?view_id=${viewId}`, {
         headers: this.createHeaders(this.token),
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))
@@ -127,8 +120,8 @@ export default class Sdk {
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))
 
-    public issues = (groupId: number, stat: string): Promise<Issue[]> =>
-        fetch(`${this.url}/api/v1/groups/${groupId}/issues?status=${stat}`, {
+    public issues = (viewId: number, stat: string): Promise<Issue[]> =>
+        fetch(`${this.url}/api/v1/issues?view_id?${viewId}&status=${stat}`, {
             headers: this.createHeaders(this.token),
             mode: this.createMode(),
         }).then((res) => this.resHandler(res))
