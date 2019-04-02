@@ -221,7 +221,7 @@ export default class Sdk {
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))
 
-    public viewsByTeam = (teamId: number): Promise<Team[]> => fetch(`${this.url}/api/v1/views/${teamId}/views`, {
+    public viewsByTeam = (teamId: number): Promise<View[]> => fetch(`${this.url}/api/v1/views/${teamId}/views`, {
         headers: this.createHeaders(this.token),
         mode: this.createMode(),
     }).then((res) => this.resHandler(res))

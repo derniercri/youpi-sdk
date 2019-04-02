@@ -45,7 +45,7 @@ export default class Sdk {
     createComment: (issueId: number, categoryId: number, content: string) => Promise<any>;
     views: () => Promise<View[]>;
     view: (id: number) => Promise<View>;
-    viewsByTeam: (teamId: number) => Promise<Team[]>;
+    viewsByTeam: (teamId: number) => Promise<View[]>;
     memberTeams: (member: number) => Promise<Team[]>;
 }
 export declare const initSdk: (url: string) => Sdk;
