@@ -12,7 +12,8 @@ import {
     CommentCategory,
     DeviceToken,
     SeriePoint,
-    RegisterForm
+    RegisterForm,
+    View
 } from './models'
 
 export * from './models'
@@ -208,6 +209,26 @@ export default class Sdk {
             method: 'POST',
             mode: this.createMode(),
         }).then((res) => this.resHandler(res))
+
+    public views = (): Promise<View[]> => fetch(`${this.url}/api/v1/views`, {
+        headers: this.createHeaders(this.token),
+        mode: this.createMode(),
+    }).then((res) => this.resHandler(res))
+
+    public view = (id: number): Promise<View> => fetch(`${this.url}/api/v1/views/${id}`, {
+        headers: this.createHeaders(this.token),
+        mode: this.createMode(),
+    }).then((res) => this.resHandler(res))
+
+    public viewsByTeam = (teamId: number): Promise<View[]> => fetch(`${this.url}/api/v1/views/${teamId}/views`, {
+        headers: this.createHeaders(this.token),
+        mode: this.createMode(),
+    }).then((res) => this.resHandler(res))
+
+    public memberTeams = (member: number): Promise<View[]> => fetch(`${this.url}/api/v1/members/${member}/teams`, {
+        headers: this.createHeaders(this.token),
+        mode: this.createMode(),
+    }).then((res) => this.resHandler(res))
 }
 
 let sdk = new Sdk('')

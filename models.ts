@@ -128,3 +128,35 @@ export const dataTypeText = (t?: number) => {
         default: return ''
     }
 }
+
+
+export type Service = {
+    id: number,
+    name: string,
+    environment: string
+}
+
+export type Application = {
+    id: number,
+    name: string,
+    services: Service[]
+}
+
+export type Bloc = {
+    id: number,
+    title: string,
+    autoBlock: boolean
+}
+
+export type View = {
+    id: number,
+    name: string,
+    teamId: number,
+    blocs: Bloc[],
+}
+
+export type Team = {
+    id: number,
+    approved: boolean,
+    name: string
+}
